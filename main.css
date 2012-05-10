@@ -28,6 +28,10 @@ footer{
   z-index:1000;
 }
 
+div#logo{ 
+  float:left;
+}
+
 div#map{ 
   height:100%;
   width:100%;
