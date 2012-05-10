@@ -1,0 +1,27 @@
+<html>
+  <head>
+    <title>Orbotix Retail</title>
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=true"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript" src="main.js"></script>
+    <link rel="stylesheet" type="text/stylesheet" href="main.css" />
+  </head>
+  <body>
+    <header><div id="logo">orboix</div>
+      <div id="locator">
+        <form id="locate">
+          <label>Enter your </label>
+          <input type="text" id="zipcode" placeholder="zipcode" />
+          <div class="btn" id="search">Search</div>
+
+        </form>
+      </div>
+      <div id="location">
+        Viewing stores near <span></span>
+        <div class="btn" id="changelocation">Change</div>
+      </div>
+    </header>
+    <div id="map"></div>
+    <footer>or order online</footer>
+  </body>
+</html>
