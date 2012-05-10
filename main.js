@@ -4,7 +4,7 @@ $(function(){
     var mapstyle = [{
         featureType: "all",
         stylers: [
-            { saturation: -80 }
+            { saturation: -50 }
         ]}];
 
      var myOptions = {
@@ -46,9 +46,6 @@ $(function(){
                     
 
                 }
-
-
-
 
             } else {
                 alert("Geocode was not successful for the following reason: " + status);
