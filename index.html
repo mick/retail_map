@@ -1,18 +1,21 @@
 <html>
   <head>
     <title>Orbotix Retail</title>
+    <meta name="viewport" content="width=device-width,initial-scale =1, user-scalable = no" />
     <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=true"></script>
+    <script type="text/javascript" src="http://www.google.com/jsapi"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-    <script type="text/javascript" src="main.js"></script>
-    <link rel="stylesheet" type="text/stylesheet" href="main.css" />
+    <script type="text/javascript" src="map.js"></script>
+    <link rel="stylesheet" type="text/css" href="map.css" />
+    <link rel="stylesheet" type="text/css" href="map_mobile.css" media=" all and (max-width: 600px)" />
   </head>
   <body>
-    <header><div id="logo"><img src="sphero.png" /></div>
-      <div id="locator">
-        <form id="locate">
+    <header><div id="logo"><a href="http://gosphero.com"><img src="images/sphero.png" /></a></div>
+      <div class="locator">
+        <form class="locate">
           <label>Enter your </label>
-          <input type="text" id="zipcode" placeholder="zipcode" />
-          <div class="btn" id="search">Search</div>
+          <input type="text" class="zipcode" placeholder="zipcode" />
+          <div class="btn search">Search</div>
 
         </form>
       </div>
@@ -22,6 +25,23 @@
       </div>
     </header>
     <div id="map"></div>
-    <footer>or order online</footer>
+    <footer>Want to get Sphero delivered to you? You can always <a href="http://store.gosphero.com">order online</a>!</footer>
+    <div id="modalcontainer">
+      <div id="modalmessage"><img src="images/sphero_blue.png" />
+        <h1>Sphero is now rolling into retail store near you!</h1>
+        <h3>Your favorite robotic ball is now available in stores. Find your nearest location.</h3>
+        
+        <div class="locator">
+          <form class="locate">
+            <label>Enter your </label>
+            <input type="text" class="zipcode" placeholder="zipcode" />
+            <div class="btn search">Search</div>
+          </form>
+        </div>
+        <div class="spacer"></div>
+        <h2>Featuring:</h2>
+        <img src="images/brookstone_small.png" />
+      </div>
+    </div>
   </body>
 </html>

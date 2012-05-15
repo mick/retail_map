@@ -1,0 +1,38 @@
+footer{ 
+  display:none;
+}
+header{ 
+  height:30px;
+  font-size:12px;
+}
+header img{
+  float:left;
+  height:20px;
+  margin:0px;
+}
+header #location{ 
+  margin:0px;
+}
+header .locator input{ 
+  font-size:12px;
+}
+header .locator { 
+  font-size:12px;
+}
+div#modalcontainer{ 
+  position:absolute;
+  height:100%;
+  left:0px;
+  right:0px;
+  width:100%;
+}
+
+div#modalmessage{ 
+  margin:5px auto;
+  width:90%;
+  padding:5px;
+  height:400px;
+}
+div#map{ 
+  bottom:0px;
+}
