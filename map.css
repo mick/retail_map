@@ -53,6 +53,7 @@ div#map{
 div.locator{ 
   float:right;
   font-size:16px;
+  margin-top:-10px;
 }
 div.locator input{ 
   padding:5px;
@@ -67,7 +68,7 @@ div.locator input.zipcode{
 div#location{ 
   float:right;
   display:none;
-  margin-top:10px;
+  margin-top:0px;
 }
 div#location input{
   margin-left:10px;
@@ -105,6 +106,7 @@ div#modalmessage{
   border:solid 3px #00a3e0;
   box-shadow:5px 5px 5px #ccc;
   margin:150px auto;
+  border-radius:10px;
 }
 div.spacer{ 
   clear:both;
@@ -139,8 +141,106 @@ div.infowindow{
   font-size:14px;
   line-height:18px;
 }
+div.infowindow a, div.infowindow a:visited{ 
+  color:#666;
+  text-decoration:none;
+}
+div.infowindow a:hover{
+  color:#333;
+  text-decoration:underline;
+} 
 div.infowindow h4{ 
   color:0093d0;
   margin:5px 0px;
   font-size:22px;
+}
+div#storecontainer{ 
+  background: rgba(0,0,0,0.5);
+  position:absolute;
+  top:0px;
+  left:0px;
+  width:100%;
+  height:100%;
+  z-index:1000;
+  display:none;
+}
+
+div#storelist{ 
+  width:80%;
+  max-width:700px;
+  background:#fff;
+  padding:20px;
+  border:solid 3px #00a3e0;
+  box-shadow:5px 5px 5px #666;
+  margin:50px auto;
+  border-radius:10px;
+  color:#333;
+  height:80%;
+  overflow:auto;
+  position:relative;
+}
+div#storelist h1{ 
+  margin-bottom:30px;
+}
+div#storelist h2{ 
+  clear:both;
+}
+div#storelist ul{
+  padding:0px;
+  margin:10px 0px;
+}
+div#storelist ul li{
+  list-style:none;
+  border-bottom:dotted 1px #ccc;
+  padding:5px;
+  clear:both;
+  height:40px;
+}
+div#storelist ul li span{ 
+  float:left;
+  width:150px;
+}
+div#storelist ul li span.name{
+  font-weight:bold;
+  color:#666;
+}
+div#storelist ul li span.address{
+  width:250px;
+  padding-right:20px;
+  font-size:0.9em;
+  color:#777;
+}
+div#storelist ul li a, div#storelist ul li a:visited{ 
+  color:#777;
+  text-decoration:none;
+}
+div#storelist ul li a:hover{
+  text-decoration:underline;
+  color:#333;
+} 
+div.close{ 
+  height:26px;
+  width:26px;
+  background:#fff;
+  color:#666;
+  cursor:pointer;
+  text-align:center;
+  padding-top:4px;
+  font-size:20px;
+  font-weight:bold;
+  position:absolute;
+  top:10px;
+  right:10px;
+}
+div.viewstorelist{ 
+  text-align:right;
+  font-size:0.8em;
+  cursor:pointer;
+  padding-top:10px;
+}
+div.viewstorelist:hover{
+  text-decoration:underline;
+} 
+div.locator div.viewstorelist{ 
+  padding-top:8px;
 }

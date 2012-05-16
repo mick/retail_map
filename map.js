@@ -48,8 +48,9 @@ $(function(){
         google.maps.event.addListener(marker, 'click', function(event) {
             infoWindow.setPosition(coordinate);
             var url = "https://maps.google.com/maps?q=" + encodeURIComponent(address);
-            infoWindow.setContent("<div class='infowindow'><a target='_blank' "+
-                                  "href='"+url+"'><h4>Brookstone</h4></a>"+formatedaddress+"</div>");
+            infoWindow.setContent("<div class='infowindow'><h4>Brookstone</h4>"+
+                                  "<a target='_blank' "+
+                                  "href='"+url+"'>"+formatedaddress+"</a><div>(555) 555-5555</div></div>");
             infoWindow.open(map);
         });
     };
@@ -69,8 +70,33 @@ $(function(){
                          response.getDataTable().getValue(i, 3)+" "+
                          response.getDataTable().getValue(i, 2),
                          response.getDataTable().getValue(i, 6));
+            addToList(coordinates, response.getDataTable().getValue(i, 6), response.getDataTable().getValue(i, 9))
         }
     });
+
+    var addToList = function(coords, address, locationType){
+
+        if(address == "")
+            return;
+        var url = "https://maps.google.com/maps?q=" + encodeURIComponent(address);
+        var row = '<li>'+
+            '<span class="name">Brookstone</span>'+
+            '<span class="address"><a href="'+url+'" target="_blank">'+address+'</a></span>' +
+            '<span class="phonenumber">(555) 555-5555</span>'+
+            '</li>';
+        if(locationType == "mall")
+            $("#malls").append(row);
+        else
+            $("#airports").append(row);
+
+
+    }
+    $("div#storelist div.close").click(function(){
+        $("div#storecontainer").fadeOut('fast');
+    })
+    $("div.viewstorelist").live("click",function(){
+        $("div#storecontainer").fadeIn('fast');
+    })
 
     $(".search").click(function(){
         dismissModal();
@@ -109,7 +135,7 @@ $(function(){
     var userLocation = function(location) {
         dismissModal();
         setZipCode();
-        $("#location").html('Using current location <div class="btn" id="changelocation">Change</div>');
+        $("#location").html('Using current location <div class="btn" id="changelocation">Change</div><div class="viewstorelist">View Store List</div>');
         getNearestStore(new google.maps.LatLng(location.coords.latitude, location.coords.longitude));
     }
     if(navigator.geolocation){  
@@ -124,7 +150,7 @@ $(function(){
     })
 
     var setZipCode = function(zipcode){
-        $("#location").html('Viewing stores near <span>'+zipcode+'</span> <div class="btn" id="changelocation">Change</div>');
+        $("#location").html('Viewing stores near <span>'+zipcode+'</span> <div class="btn" id="changelocation">Change</div><div class="viewstorelist">View Store List</div>');
         $("header .locator").fadeOut('fast', function(){
             $("#location").fadeIn('fast');
         })

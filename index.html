@@ -16,31 +16,43 @@
           <label>Enter your </label>
           <input type="text" class="zipcode" placeholder="zipcode" />
           <div class="btn search">Search</div>
-
+          <div class="viewstorelist">View Store List</div>
         </form>
       </div>
       <div id="location">
         Viewing stores near <span></span>
         <div class="btn" id="changelocation">Change</div>
+        <div class="viewstorelist">View Store List</div>
       </div>
     </header>
     <div id="map"></div>
     <footer>Want to get Sphero delivered to you? You can always <a href="http://store.gosphero.com">order online</a>!</footer>
     <div id="modalcontainer">
       <div id="modalmessage"><img src="images/sphero_blue.png" />
-        <h1>Sphero is now rolling into retail store near you!</h1>
-        <h3>Your favorite robotic ball is now available in stores. Find your nearest location.</h3>
+        <h1>Sphero is now rolling into a retail store near you.</h1>
+        <h3>Find your nearest location and go have a ball!</h3>
         
         <div class="locator">
           <form class="locate">
             <label>Enter your </label>
             <input type="text" class="zipcode" placeholder="zipcode" />
             <div class="btn search">Search</div>
+            <div class="viewstorelist">View Store List</div>
           </form>
         </div>
         <div class="spacer"></div>
         <h2>Featuring:</h2>
         <img src="images/brookstone_small.png" />
+      </div>
+    </div>
+    <div id="storecontainer">
+      <div id="storelist">
+        <div class="close">X</div>
+        <h1>Sphero is available in these stores</h1>
+        <h2>Malls</h2>
+        <ul id="malls"></ul>
+        <h2>Airports</h2>
+        <ul id="airports"></ul>
       </div>
     </div>
   </body>

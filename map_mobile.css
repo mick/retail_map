@@ -9,15 +9,18 @@ header img{
   float:left;
   height:20px;
   margin:0px;
+  margin-top:15px;
 }
 header #location{ 
   margin:0px;
+  margin-top:-35px;
 }
 header .locator input{ 
   font-size:12px;
 }
 header .locator { 
   font-size:12px;
+  margin-top:-45px;
 }
 div#modalcontainer{ 
   position:absolute;
@@ -35,4 +38,13 @@ div#modalmessage{
 }
 div#map{ 
   bottom:0px;
+}
+div#storelist{ 
+  margin:5px auto;
+}
+div#storelist{ 
+  height:auto;
+}
+div#storelist ul li{
+  height:80px;
 }
