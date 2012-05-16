@@ -39,7 +39,7 @@ $(function(){
     var gvizQuery = new google.visualization.Query(
         'http://www.google.com/fusiontables/gvizdata?tq=' + query);
 
-    var createMarker = function(coordinate, formatedaddress, address) {
+    var createMarker = function(coordinate, formatedaddress, address, phonenum) {
         var marker = new google.maps.Marker({
             map: map,
             position: coordinate,
@@ -50,7 +50,7 @@ $(function(){
             var url = "https://maps.google.com/maps?q=" + encodeURIComponent(address);
             infoWindow.setContent("<div class='infowindow'><h4>Brookstone</h4>"+
                                   "<a target='_blank' "+
-                                  "href='"+url+"'>"+formatedaddress+"</a><div>(555) 555-5555</div></div>");
+                                  "href='"+url+"'>"+formatedaddress+"</a><div>"+phonenum+"</div></div>");
             google.maps.event.addDomListenerOnce(infoWindow, "domready", function(){
                 // hack to get google to have rounder corners on info windows.
                 $(".infowindow").parent().parent().parent().siblings().css("border-radius", "10px");               
@@ -73,12 +73,12 @@ $(function(){
                          response.getDataTable().getValue(i, 4)+", "+
                          response.getDataTable().getValue(i, 3)+" "+
                          response.getDataTable().getValue(i, 2),
-                         response.getDataTable().getValue(i, 6));
-            addToList(coordinates, response.getDataTable().getValue(i, 6), response.getDataTable().getValue(i, 9))
+                         response.getDataTable().getValue(i, 6), response.getDataTable().getValue(i, 10));
+            addToList(coordinates, response.getDataTable().getValue(i, 6), response.getDataTable().getValue(i, 9), response.getDataTable().getValue(i, 10))
         }
     });
 
-    var addToList = function(coords, address, locationType){
+    var addToList = function(coords, address, locationType, phonenum){
 
         if(address == "")
             return;
@@ -86,7 +86,7 @@ $(function(){
         var row = '<li>'+
             '<span class="name">Brookstone</span>'+
             '<span class="address"><a href="'+url+'" target="_blank">'+address+'</a></span>' +
-            '<span class="phonenumber">(555) 555-5555</span>'+
+            '<span class="phonenumber">'+phonenum+'</span>'+
             '</li>';
         if(locationType == "mall")
             $("#malls").append(row);
