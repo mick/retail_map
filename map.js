@@ -51,6 +51,10 @@ $(function(){
             infoWindow.setContent("<div class='infowindow'><h4>Brookstone</h4>"+
                                   "<a target='_blank' "+
                                   "href='"+url+"'>"+formatedaddress+"</a><div>(555) 555-5555</div></div>");
+            google.maps.event.addDomListenerOnce(infoWindow, "domready", function(){
+                // hack to get google to have rounder corners on info windows.
+                $(".infowindow").parent().parent().parent().siblings().css("border-radius", "10px");               
+            })
             infoWindow.open(map);
         });
     };
