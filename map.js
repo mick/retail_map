@@ -161,8 +161,16 @@ $(function(){
 
     };
 
+    $(document).keydown(function(e){
+        console.log(e)
+        if(e.keyCode == 27){
+            dismissModal();
+        }
+    })
+    
     var dismissModal = function(){
         $("#modalcontainer").fadeOut();
+        $("#storecontainer").fadeOut();
     };
     $("#modalmessage .locator input").focus();
 

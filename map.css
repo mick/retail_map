@@ -235,6 +235,11 @@ div.viewstorelist{
   font-size:0.8em;
   cursor:pointer;
   padding-top:10px;
+  font-weight:bold;
+}
+div#modalmessage div.viewstorelist{ 
+  font-size:18px;
+  color:#0093d0;
 }
 div.viewstorelist:hover{
   text-decoration:underline;
