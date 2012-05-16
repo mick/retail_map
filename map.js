@@ -39,16 +39,19 @@ $(function(){
     var gvizQuery = new google.visualization.Query(
         'http://www.google.com/fusiontables/gvizdata?tq=' + query);
 
-    var createMarker = function(coordinate, formatedaddress, address, phonenum) {
+    var createMarker = function(coordinate, formatedaddress, locationType, address, phonenum, airportname) {
         var marker = new google.maps.Marker({
             map: map,
             position: coordinate,
             icon: new google.maps.MarkerImage('images/orbotixMapPin.png')
         });
+        var name = "Brookstone";
+        if(locationType == "airport")
+            name = airportname;
         google.maps.event.addListener(marker, 'click', function(event) {
             infoWindow.setPosition(coordinate);
             var url = "http://maps.google.com/maps?saddr=&daddr=" + encodeURIComponent(address);
-            infoWindow.setContent("<div class='infowindow'><h4>Brookstone</h4>"+
+            infoWindow.setContent("<div class='infowindow'><h4>"+name+"</h4>"+
                                   "<a target='_blank' "+
                                   "href='"+url+"'>"+formatedaddress+"</a><div>"+phonenum+"</div></div>");
             google.maps.event.addDomListenerOnce(infoWindow, "domready", function(){
@@ -73,18 +76,28 @@ $(function(){
                          response.getDataTable().getValue(i, 4)+", "+
                          response.getDataTable().getValue(i, 3)+" "+
                          response.getDataTable().getValue(i, 2),
-                         response.getDataTable().getValue(i, 6), response.getDataTable().getValue(i, 10));
-            addToList(coordinates, response.getDataTable().getValue(i, 6), response.getDataTable().getValue(i, 9), response.getDataTable().getValue(i, 10))
+                         response.getDataTable().getValue(i, 9),
+                         response.getDataTable().getValue(i, 6), 
+                         response.getDataTable().getValue(i, 10), 
+                         response.getDataTable().getValue(i, 11));
+            addToList(coordinates, response.getDataTable().getValue(i, 6), 
+                      response.getDataTable().getValue(i, 9), 
+                      response.getDataTable().getValue(i, 10),
+                      response.getDataTable().getValue(i, 11))
         }
     });
 
-    var addToList = function(coords, address, locationType, phonenum){
+    var addToList = function(coords, address, locationType, phonenum, airportname){
 
         if(address == "")
             return;
         var url = "http://maps.google.com/maps?saddr=&daddr=" + encodeURIComponent(address);
+        var name = "Brookstone";
+        if(locationType == "airport")
+            name = airportname;
+
         var row = '<li>'+
-            '<span class="name">Brookstone</span>'+
+            '<span class="name">'+name+'</span>'+
             '<span class="address"><a href="'+url+'" target="_blank">'+address+'</a></span>' +
             '<span class="phonenumber">'+phonenum+'</span>'+
             '</li>';

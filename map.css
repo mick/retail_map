@@ -201,6 +201,8 @@ div#storelist ul li span{
 div#storelist ul li span.name{
   font-weight:bold;
   color:#666;
+  width:200px;
+  padding-right:20px;
 }
 div#storelist ul li span.address{
   width:250px;
