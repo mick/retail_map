@@ -106,7 +106,6 @@ div#modalmessage{
   border:solid 3px #00a3e0;
   box-shadow:5px 5px 5px #ccc;
   margin:150px auto;
-  border-radius:10px;
 }
 div.spacer{ 
   clear:both;
@@ -173,7 +172,6 @@ div#storelist{
   border:solid 3px #00a3e0;
   box-shadow:5px 5px 5px #666;
   margin:50px auto;
-  border-radius:10px;
   color:#333;
   height:80%;
   overflow:auto;
