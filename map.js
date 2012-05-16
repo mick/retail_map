@@ -47,7 +47,7 @@ $(function(){
         });
         google.maps.event.addListener(marker, 'click', function(event) {
             infoWindow.setPosition(coordinate);
-            var url = "https://maps.google.com/maps?q=" + encodeURIComponent(address);
+            var url = "http://maps.google.com/maps?saddr=&daddr=" + encodeURIComponent(address);
             infoWindow.setContent("<div class='infowindow'><h4>Brookstone</h4>"+
                                   "<a target='_blank' "+
                                   "href='"+url+"'>"+formatedaddress+"</a><div>"+phonenum+"</div></div>");
@@ -82,7 +82,7 @@ $(function(){
 
         if(address == "")
             return;
-        var url = "https://maps.google.com/maps?q=" + encodeURIComponent(address);
+        var url = "http://maps.google.com/maps?saddr=&daddr=" + encodeURIComponent(address);
         var row = '<li>'+
             '<span class="name">Brookstone</span>'+
             '<span class="address"><a href="'+url+'" target="_blank">'+address+'</a></span>' +
