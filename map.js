@@ -34,7 +34,7 @@ $(function(){
     
     // Send query to Google Chart Tools to get data from table.
     // Note: the Chart Tools API returns up to 500 rows.
-    var query = "SELECT * FROM 1JVFdZ_-2xKLlD9RQjdzn61d4DzXMjYeZht8jh4c";
+    var query = "SELECT * FROM 1JVFdZ_-2xKLlD9RQjdzn61d4DzXMjYeZht8jh4c order by company";
     query = encodeURIComponent(query);
     var gvizQuery = new google.visualization.Query(
         'http://www.google.com/fusiontables/gvizdata?tq=' + query);
