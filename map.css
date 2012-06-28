@@ -135,6 +135,10 @@ h3{
   text-align:justify;
 }
 
+img.logos{ 
+  margin-right:15px;
+}
+
 div.infowindow{ 
   color:#666;
   font-size:14px;

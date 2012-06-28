@@ -39,13 +39,13 @@ $(function(){
     var gvizQuery = new google.visualization.Query(
         'http://www.google.com/fusiontables/gvizdata?tq=' + query);
 
-    var createMarker = function(coordinate, formatedaddress, locationType, address, phonenum, airportname) {
+    var createMarker = function(coordinate, formatedaddress, locationType, address, phonenum, airportname, company) {
         var marker = new google.maps.Marker({
             map: map,
             position: coordinate,
             icon: new google.maps.MarkerImage('images/orbotixMapPin.png')
         });
-        var name = "Brookstone";
+        var name = company;
         if(locationType == "airport")
             name = airportname;
         google.maps.event.addListener(marker, 'click', function(event) {
@@ -79,20 +79,22 @@ $(function(){
                          response.getDataTable().getValue(i, 9),
                          response.getDataTable().getValue(i, 6), 
                          response.getDataTable().getValue(i, 10), 
-                         response.getDataTable().getValue(i, 11));
+                         response.getDataTable().getValue(i, 11),
+                         response.getDataTable().getValue(i, 12));
             addToList(coordinates, response.getDataTable().getValue(i, 6), 
                       response.getDataTable().getValue(i, 9), 
                       response.getDataTable().getValue(i, 10),
-                      response.getDataTable().getValue(i, 11))
+                      response.getDataTable().getValue(i, 11),
+                      response.getDataTable().getValue(i, 12));
         }
     });
 
-    var addToList = function(coords, address, locationType, phonenum, airportname){
+    var addToList = function(coords, address, locationType, phonenum, airportname, company){
 
         if(address == "")
             return;
         var url = "http://maps.google.com/maps?saddr=&daddr=" + encodeURIComponent(address);
-        var name = "Brookstone";
+        var name = company;
         if(locationType == "airport")
             name = airportname;
 
