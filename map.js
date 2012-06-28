@@ -47,7 +47,7 @@ $(function(){
         });
         var name = company;
         if(locationType == "airport")
-            name = airportname;
+            name = company +" at " + airportname;
         google.maps.event.addListener(marker, 'click', function(event) {
             infoWindow.setPosition(coordinate);
             var url = "http://maps.google.com/maps?saddr=&daddr=" + encodeURIComponent(address);
@@ -96,7 +96,7 @@ $(function(){
         var url = "http://maps.google.com/maps?saddr=&daddr=" + encodeURIComponent(address);
         var name = company;
         if(locationType == "airport")
-            name = airportname;
+            name = company +" at " + airportname;
 
         var row = '<li>'+
             '<span class="name">'+name+'</span>'+
