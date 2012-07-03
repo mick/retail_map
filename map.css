@@ -6,7 +6,7 @@ body{
 img{ 
   border:none;
 }
-header{ 
+div#header{ 
   position:absolute;
   top:0px;
   left:0px;
@@ -20,7 +20,7 @@ header{
 
 }
 
-footer{ 
+div#footer{ 
   position:absolute;
   bottom:0px;
   left:0px;
@@ -32,10 +32,10 @@ footer{
   padding:10px;
   z-index:1000;
 }
-footer a, footer a:visited{ 
+div#footer a, div#footer a:visited{ 
   color:#aaa
 }
-footer a:hover{
+div#footer a:hover{
   color:#999;
 } 
 div#logo{ 
