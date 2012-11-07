@@ -1,5 +1,21 @@
 google.load('visualization', '1');
 $(function(){
+
+    /** 
+    * Get the zipcode param if available
+    */
+    var $_GET = {};
+
+    document.location.search.replace(/\??(?:([^=]+)=([^&]*)&?)/g, function () {
+        function decode(s) {
+            return decodeURIComponent(s.split("+").join(" "));
+        }
+
+        $_GET[decode(arguments[1])] = decode(arguments[2]);
+    });
+
+
+    
     var geocoder = new google.maps.Geocoder();
     var mapstyle = [{
         featureType: "all",
@@ -34,8 +50,9 @@ $(function(){
     
     // Send query to Google Chart Tools to get data from table.
     // Note: the Chart Tools API returns up to 500 rows.
-    var query = "SELECT * FROM 1JVFdZ_-2xKLlD9RQjdzn61d4DzXMjYeZht8jh4c order by company";
+    var query = "SELECT * FROM 1fJjnZCwJfRpBkNk4pXyHFBBUmlnktlt4-PZ600Q where Name NOT EQUAL TO 'Target'";
     query = encodeURIComponent(query);
+    // http://www.google.com/fusiontables/gvizdata?tq=SELECT * FROM 1fJjnZCwJfRpBkNk4pXyHFBBUmlnktlt4-PZ600Q
     var gvizQuery = new google.visualization.Query(
         'http://www.google.com/fusiontables/gvizdata?tq=' + query);
 
@@ -65,27 +82,55 @@ $(function(){
     gvizQuery.send(function(response) {
         var numRows = response.getDataTable().getNumberOfRows();
         
+        /*
+         Old table:
+          0: Store number
+          1: Store Name
+          2: Zip
+          3: State
+          4: City
+          5: Street Address
+          6: Formatted Address
+          7: Lat
+          8: Long
+          9: Location Type
+          10: Phone
+          11: Airport Name
+          12: Company
+
+          New Table
+          0: Company
+          1: Store Name
+          2: Formatted Address
+          3: Street Address
+          4: City
+          5: State
+          6: Zip
+          7: Phone
+          8: Lat
+          9: Long
+          */
         // For each row in the table, create a marker
         for (var i = 0; i < numRows; i++) {         
-            var lat = response.getDataTable().getValue(i, 7);
+            var lat = response.getDataTable().getValue(i, 9);
             var lng = response.getDataTable().getValue(i, 8);
             var coordinates = new google.maps.LatLng(lat, lng);
             var store = response.getDataTable().getValue(i, 1);
-            points.push({coordinates:coordinates, address:response.getDataTable().getValue(i, 6)})
-            createMarker(coordinates, response.getDataTable().getValue(i, 5)+"<br />"+
+            points.push({coordinates:coordinates, address:response.getDataTable().getValue(i, 2)})
+            createMarker(coordinates, response.getDataTable().getValue(i, 3)+"<br />"+
                          response.getDataTable().getValue(i, 4)+", "+
-                         response.getDataTable().getValue(i, 3)+" "+
-                         response.getDataTable().getValue(i, 2),
-                         response.getDataTable().getValue(i, 9),
-                         response.getDataTable().getValue(i, 6), 
-                         response.getDataTable().getValue(i, 10), 
-                         response.getDataTable().getValue(i, 11),
-                         response.getDataTable().getValue(i, 12));
-            addToList(coordinates, response.getDataTable().getValue(i, 6), 
-                      response.getDataTable().getValue(i, 9), 
-                      response.getDataTable().getValue(i, 10),
-                      response.getDataTable().getValue(i, 11),
-                      response.getDataTable().getValue(i, 12));
+                         response.getDataTable().getValue(i, 5)+" "+
+                         response.getDataTable().getValue(i, 6),
+                         'notairport',
+                         response.getDataTable().getValue(i, 2), 
+                         response.getDataTable().getValue(i, 7), 
+                         'none',
+                         response.getDataTable().getValue(i, 0));
+            addToList(coordinates, response.getDataTable().getValue(i, 2), 
+                      'notairport', 
+                      response.getDataTable().getValue(i, 7),
+                      'none',
+                      response.getDataTable().getValue(i, 0));
         }
     });
 
@@ -203,7 +248,13 @@ $(function(){
             $("header .search").click();
         }
     }
-            
+    if (typeof($_GET['zipcode']) != undefined){ 
+      $(".locator .zipcode").val($_GET['zipcode']);
+      $(".search").click();
+      // alert("ok"); 
+      // dismissModal(); 
+      // setZipCode(80302); 
+    }
 
 
 
