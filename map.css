@@ -120,6 +120,7 @@ h1{
   margin:5px 0px 3px 0px;
 
 }
+
 h2{ 
   color:#0093d0;
   font-size:18px;
@@ -181,7 +182,7 @@ div#storelist{
   position:relative;
 }
 div#storelist h1{ 
-  margin-bottom:30px;
+  margin-bottom:0px;
 }
 div#storelist h2{ 
   clear:both;
